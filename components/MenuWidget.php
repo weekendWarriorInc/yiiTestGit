@@ -18,7 +18,7 @@ class MenuWidget extends Widget
         parent::init();
 
         if ($this->tpl === null) {
-            $this->tpl = 'menu';
+            $this->tpl = 'menu';//hgfhgfh
         }
         $this->tpl .= '.php';
     }
