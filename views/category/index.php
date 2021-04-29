@@ -79,7 +79,7 @@ use yii\helpers\Url;
                                     
                                     <h2><?= $hit->price; ?></h2>
                                     <p><a href="<?= Url::to(['product/view', 'id'=>$hit->id]);?>"><?= $hit->name; ?></a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href="<?= Url::to(['cart/add','id'=>$hit->id])?>" data-id="<?= $hit->id ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             <?php if($hit->new): ?>
                                 <?= Html::img('@web/images/products/new.png', ['alt'=> 'new image', 'class'=>'new']); ?>
@@ -97,8 +97,7 @@ use yii\helpers\Url;
                         </div>
                     </div>
                     <?php endforeach; ?>
-                   
-                  
+                                    
                   
 
                 </div>

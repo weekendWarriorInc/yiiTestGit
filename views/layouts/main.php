@@ -29,7 +29,7 @@ ltAppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
 
-  
+
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -77,8 +77,8 @@ ltAppAsset::register($this);
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="<?= Url::home(); ?>"><?= Html::img('@web/images/home/logo.png' , ['alt'=>'logo']); ?>
-                           
+                            <a href="<?= Url::home(); ?>"><?= Html::img('@web/images/home/logo.png', ['alt' => 'logo']); ?>
+
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -158,7 +158,10 @@ ltAppAsset::register($this);
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" />
+                            <form method="GET" action="<?= Url::to(['category/search']) ?>">
+                                <input type="text" placeholder="Search" name="q" />
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -168,8 +171,8 @@ ltAppAsset::register($this);
     </header>
     <!--/header-->
 
-  <?= $content; ?>
-  
+    <?= $content; ?>
+
 
     <footer id="footer">
         <!--Footer-->
