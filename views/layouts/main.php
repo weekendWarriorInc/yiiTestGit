@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\ltAppAsset;
+use yii\bootstrap\Modal;
 use yii\helpers\Url;
 
 AppAsset::register($this);
@@ -110,7 +111,7 @@ ltAppAsset::register($this);
                                 <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="#" onclick="getCart()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
@@ -141,7 +142,7 @@ ltAppAsset::register($this);
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="#" onclick="getCart()">Cart</a></li>
                                         <li><a href="login.html">Login</a></li>
                                     </ul>
                                 </li>
@@ -333,7 +334,19 @@ ltAppAsset::register($this);
 
     </footer>
     <!--/Footer-->
+    <?php Modal::begin([
+        'header' => '<h2>Кошик</h2>',
+        'id'=>'cart',
+        'size'=>'modal-lg',
+        'footer' => '<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Продовжити покупки</button>
+                    <a href ="'. Url::to(['/cart/view']).'" class="btn btn-success">Оформити замовлення</a>
+                    <button type="button" class="btn btn-danger" onclick="clearCart()">Очистити кошик</button>',
 
+
+    ]) ?>
+
+
+    <?php Modal::end() ?>
 
 
     <?php $this->endBody() ?>

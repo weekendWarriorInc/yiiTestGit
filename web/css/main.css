@@ -2521,3 +2521,6 @@ h2.title {
 }
 
 
+.del-item {
+  cursor: pointer;
+}
