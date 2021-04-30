@@ -16,5 +16,11 @@ class CartController extends AppController
         $product = Product::findOne($id);
         if(!$product) return false;
        
+        $session=Yii::$app->session;
+        $session->open();
+        $cart=new Cart();
+        $cart->addToCart($product);
+        debug($session['cart']);
     }
+
 }
