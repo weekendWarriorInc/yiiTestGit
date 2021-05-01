@@ -24,8 +24,12 @@ function getCart() {
 
 	return false;
 }
+function removeOnePosition()
+{
 
-$('#cart .modal-body').on('click', '.del-item', function () {
+}
+
+$('#cart .modal-body').on('click', '.del-item',function(){
 	var id = $(this).data('id');
 	$.ajax({
 		url: '/cart/del-item',
@@ -43,6 +47,27 @@ $('#cart .modal-body').on('click', '.del-item', function () {
 		}
 	})
 });
+/* $('.container').on('click', '.del-item', function() {
+	var id = $(this).data('id');
+	var view = $(this).data('view');
+	$.ajax({
+		url: '/cart/view',
+		data: {
+			id: id,
+			view: view
+			
+		},
+		type: 'GET',
+		success: function (res) {
+			if (!res) alert('error');
+
+			showCart(res);
+		},
+		error: function () {
+			alert('Error!')
+		}
+	})
+}); */
 
 function clearCart() {
 	$.ajax({

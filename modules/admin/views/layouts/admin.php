@@ -3,11 +3,9 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
+
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+
 use app\assets\AppAsset;
 use app\assets\ltAppAsset;
 use yii\bootstrap\Modal;
@@ -28,7 +26,7 @@ ltAppAsset::register($this);
     <meta name="description" content="">
     <meta name="author" content="">
     <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Адмінка | <?= Html::encode($this->title) ?></title>
 
 
     <link rel="shortcut icon" href="images/ico/favicon.ico">
@@ -334,19 +332,10 @@ ltAppAsset::register($this);
 
     </footer>
     <!--/Footer-->
-    <?php Modal::begin([
-        'header' => '<h2>Кошик</h2>',
-        'id'=>'cart',
-        'size'=>'modal-lg',
-        'footer' => '<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Продовжити покупки</button>
-                    <a href ="'. Url::to(['/cart/view']).'" class="btn btn-success">Оформити замовлення</a>
-                    <button type="button" class="btn btn-danger" onclick="clearCart()">Очистити кошик</button>',
 
 
-    ]) ?>
 
-
-    <?php Modal::end() ?>
+    
 
 
     <?php $this->endBody() ?>

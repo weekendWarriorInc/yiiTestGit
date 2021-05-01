@@ -6,6 +6,16 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="container">
+    <?php if (Yii::$app->session->hasFlash('success')) : ?>
+        <h2><?= Yii::$app->session->getFlash('success'); ?></h2>
+    <?php else : ?>
+        <?php if (Yii::$app->session->hasFlash('error')) : ?>
+            <h2><?= Yii::$app->session->getFlash('error'); ?></h2>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>
+
+<div class="container">
     <?php if (!empty($session['cart'])) : ?>
         <div class="table-responsive">
             <table class="table table-hover table-striped">
@@ -32,11 +42,11 @@ use yii\widgets\ActiveForm;
                         </tr>
                     <?php endforeach; ?>
                     <tr>
-                        <td colspan="4">Разом: </td>
+                        <td colspan="5">Разом: </td>
                         <td> <?= $session['cart.qty']; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="4">На суму: </td>
+                        <td colspan="5">На суму: </td>
                         <td> <?= $session['cart.sum']; ?></td>
                     </tr>
                 </tbody>
@@ -50,7 +60,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($order, 'email') ?>
         <?= $form->field($order, 'phone') ?>
         <?= $form->field($order, 'address') ?>
-        <?= Html::submitButton('Заказати', ['class'=>'btn btn success']); ?>
+        <?= Html::submitButton('Заказати', ['class' => 'btn btn success']); ?>
 
         <?php $form->end() ?>
     <?php else : ?>
