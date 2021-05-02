@@ -108,11 +108,13 @@ ltAppAsset::register($this);
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                <?php if (!Yii::$app->user->isGuest) : ?>
+                                    <li><a href="<?= Url::to(['/site/logout'])?>"><i class="fa fa-user"></i> <?= Yii::$app->user->identity['username'];?>Вихід</a></li>
+                                <?php endif ?>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="#" onclick="getCart()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="<?= Url::to('admin');?>"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="<?= Url::to('admin'); ?>"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
                     </div>
@@ -143,7 +145,7 @@ ltAppAsset::register($this);
                                         <li><a href="product-details.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="#" onclick="getCart()">Cart</a></li>
-                                        <li><a href="<?= Url::to('admin');?>">Login</a></li>
+                                        <li><a href="<?= Url::to('admin'); ?>">Login</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -336,10 +338,10 @@ ltAppAsset::register($this);
     <!--/Footer-->
     <?php Modal::begin([
         'header' => '<h2>Кошик</h2>',
-        'id'=>'cart',
-        'size'=>'modal-lg',
+        'id' => 'cart',
+        'size' => 'modal-lg',
         'footer' => '<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Продовжити покупки</button>
-                    <a href ="'. Url::to(['/cart/view']).'" class="btn btn-success">Оформити замовлення</a>
+                    <a href ="' . Url::to(['/cart/view']) . '" class="btn btn-success">Оформити замовлення</a>
                     <button type="button" class="btn btn-danger" onclick="clearCart()">Очистити кошик</button>',
 
 
