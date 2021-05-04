@@ -37,9 +37,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'keywords',
             'description',
             'img',
-            'hit',
-            'new',
-            'sale',
+            [
+                'attribute'=>'hit',
+                'value' =>
+                   !$model->hit ? '<span class="text-danger">Ні</span>' : '<span class="text-success">Так</span>',
+                
+                'format'=>'html',    
+            ],
+            [
+                'attribute'=>'new',
+                'value' =>
+                   !$model->new ? '<span class="text-danger">Ні</span>' : '<span class="text-success">Так</span>',
+                'format'=>'html',    
+            ],
+            [
+                'attribute'=>'sale',
+                'value' =>
+                    !$model->sale ? '<span class="text-danger">Ні</span>' : '<span class="text-success">Так</span>',
+               
+                'format'=>'html',    
+            ],
         ],
     ]) ?>
 

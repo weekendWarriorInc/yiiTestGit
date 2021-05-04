@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use mihaildev\elfinder\ElFinder;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Product */
@@ -12,11 +14,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <label class="control-label" for="product-category_id">Категорія</label>
+    <select id="product-category_id" class="form-control" name="Product[category_id]" aria-invalid="false">
+        <?= \app\components\MenuWidget::widget(['tpl' => 'select_product', 'model'=>$model]) ?>
+    </select>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+   <?php 
+   echo ElFinder::widget([
+    'language'         => 'ru',
+    'controller'       => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
+    'filter'           => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
+    'callbackFunction' => new JsExpression('function(file, id){}') // id - id виджета
+]);?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
@@ -26,11 +37,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'hit')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'hit')->checkbox() ?>
 
-    <?= $form->field($model, 'new')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'new')->checkbox()  ?>
 
-    <?= $form->field($model, 'sale')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'sale')->checkbox()  ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

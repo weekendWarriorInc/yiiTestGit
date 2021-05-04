@@ -28,15 +28,17 @@ class Product extends \yii\db\ActiveRecord
     {
         return 'product';
     }
+public function getCategory()
+{
+    return $this->hasOne(Category::className(), ['id'=>'category_id']);
+}
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
             [['category_id'], 'integer'],
-            [['content', 'hit', 'new', 'sale'], 'string'],
+            [['content'], 'string'],
+            [[ 'hit', 'new', 'sale'], 'boolean'],
             [['price'], 'number'],
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],
         ];
@@ -48,17 +50,17 @@ class Product extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'category_id' => 'Category ID',
-            'name' => 'Name',
-            'content' => 'Content',
-            'price' => 'Price',
-            'keywords' => 'Keywords',
-            'description' => 'Description',
-            'img' => 'Img',
-            'hit' => 'Hit',
-            'new' => 'New',
-            'sale' => 'Sale',
+            'id' => 'Номер товару',
+            'category_id' => 'Категорія',
+            'name' => 'Назва товару',
+            'content' => 'Опис товару',
+            'price' => 'Ціна',
+            'keywords' => 'Ключові слова',
+            'description' => 'Мета-інформація',
+            'img' => 'Фото',
+            'hit' => 'Хіт',
+            'new' => 'Новинка',
+            'sale' => 'Розпродаж',
         ];
     }
 }

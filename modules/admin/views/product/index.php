@@ -24,14 +24,43 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'category_id',
-            'name',
-            'content:ntext',
+        //    'category_id',
+        [
+            'attribute'=>'category_id',
+            'value' =>function($data){
+                return $data->category->name;
+            },
+            'format'=>'raw',
+
+        ],
+            'name',           
             'price',
+            [
+                'attribute'=>'hit',
+                'value' =>function($data){
+                    return !$data->hit ? '<span class="text-danger">Ні</span>' : '<span class="text-success">Так</span>';
+                },
+                'format'=>'html',    
+            ],
+            [
+                'attribute'=>'new',
+                'value' =>function($data){
+                    return !$data->new ? '<span class="text-danger">Ні</span>' : '<span class="text-success">Так</span>';
+                },
+                'format'=>'html',    
+            ],
+            [
+                'attribute'=>'sale',
+                'value' =>function($data){
+                    return !$data->sale ? '<span class="text-danger">Ні</span>' : '<span class="text-success">Так</span>';
+                },
+                'format'=>'html',    
+            ],
+           
             //'keywords',
             //'description',
             //'img',
-            //'hit',
+           // 'hit',
             //'new',
             //'sale',
 

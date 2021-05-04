@@ -28,7 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'parent_id',
                 'value' => function ($data) {
-                    return $data->category->name ? $data->category->name : 'Самостійна категорія';
+                  
+                   return $data->category->name ? $data->category->name : 'Самостійна категорія';
                 }
             ],
             'name',
