@@ -136,24 +136,21 @@ ltAppAsset::register($this);
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Home</a></li>
-                                <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                <li><a href="<?= Url::to(['/admin/']);?>" class="active">Home</a></li>
+                                <li class="dropdown"><a href="#">Категорії<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="#" onclick="getCart()">Cart</a></li>
-                                        <li><a href="<?= Url::to('admin');?>">Login</a></li>
+                                        <li><a href="<?= Url::to(['category/index']);?>">Список категорій</a></li>
+                                        <li><a href="<?= Url::to(['category/create']);?>">Додати категорію</a></li>
+                                     
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                <li class="dropdown"><a href="#">Товари<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
+                                        <li><a href="<?= Url::to(['product/index']);?>">Список товарів</a></li>
+                                        <li><a href="<?= Url::to(['product/create']);?>">Додати товар</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                              
                             </ul>
                         </div>
                     </div>
@@ -171,8 +168,11 @@ ltAppAsset::register($this);
         <!--/header-bottom-->
     </header>
     <!--/header-->
-
+    <div class="container">
     <?= $content; ?>
+    </div>
+
+ 
 
 
     <footer id="footer">

@@ -72,7 +72,7 @@ class SiteController extends AppController
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->response->redirect(Yii::$app->getHomeUrl());
+            return $this->response->redirect(['admin']);
         }
 
         $model = new LoginForm();
