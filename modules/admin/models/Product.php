@@ -21,6 +21,17 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+
+    public $image;
+    public $gallery;
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -37,6 +48,8 @@ public function getCategory()
     {
         return [
             [['category_id'], 'integer'],
+            [['image'], 'file', 'extensions' => 'png, jpg'],
+         //   [['gallery'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 4],
             [['content'], 'string'],
             [[ 'hit', 'new', 'sale'], 'boolean'],
             [['price'], 'number'],
@@ -57,7 +70,7 @@ public function getCategory()
             'price' => 'Ціна',
             'keywords' => 'Ключові слова',
             'description' => 'Мета-інформація',
-            'img' => 'Фото',
+            'image' => 'Фото',
             'hit' => 'Хіт',
             'new' => 'Новинка',
             'sale' => 'Розпродаж',
